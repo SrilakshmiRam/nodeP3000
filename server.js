@@ -10,7 +10,11 @@ const app=express()
 const dbPath=path.join(__dirname,"todoUsers.db")
 
 app.use(express.json())
-app.use(cors())
+app.use(cors({
+    origin:'http://localhost:3000',
+    methods:['POST','GET'],
+    allowedHeaders:['Content-Type','Authorization']
+}))
 
 let db=null
 const initiateAndStartDatabseServer=async()=>{
